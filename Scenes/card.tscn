@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://do22l6w1ilhvp"]
+[gd_scene load_steps=3 format=3 uid="uid://do22l6w1ilhvp"]
 
+[ext_resource type="Texture2D" uid="uid://cr566lhwassob" path="res://cards/Joker.png" id="1_2cf7r"]
 [ext_resource type="Script" path="res://Scripts/Card.gd" id="1_ky6nq"]
 
 [node name="Card" type="TextureRect"]
+texture = ExtResource("1_2cf7r")
 script = ExtResource("1_ky6nq")
