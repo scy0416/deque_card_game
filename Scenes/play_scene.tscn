@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://dyd4aiki7qqya"]
+
+[node name="PlayScene" type="Node"]
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBC" type="VBoxContainer" parent="UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="UI/VBC"]
+layout_mode = 2
+
+[node name="Other" type="HBoxContainer" parent="UI/VBC"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Control" type="Control" parent="UI/VBC/Other"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Control2" type="Control" parent="UI/VBC/Other"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Hand" type="HFlowContainer" parent="UI/VBC"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Front" type="Button" parent="UI/VBC/Hand"]
+layout_mode = 2
+text = "놓기(앞쪽)"
+
+[node name="Back" type="Button" parent="UI/VBC/Hand"]
+layout_mode = 2
+text = "놓기(뒤쪽)"
