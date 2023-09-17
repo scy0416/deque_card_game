@@ -39,3 +39,6 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 30
 text = "종료하기"
+
+[connection signal="pressed" from="CC/VBC/Title" to="." method="_on_title_pressed"]
+[connection signal="pressed" from="CC/VBC/Exit" to="." method="_on_exit_pressed"]

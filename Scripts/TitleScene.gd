@@ -6,7 +6,7 @@ func _on_start_pressed():
 
 # 규칙 버튼을 누르는 경우
 func _on_rule_pressed():
-	pass # Replace with function body.
+	get_tree().change_scene_to_file("res://Scenes/description.tscn")
 
 # 나가기 버튼을 누르는 경우
 func _on_quit_pressed():

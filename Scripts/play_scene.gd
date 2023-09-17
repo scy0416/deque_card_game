@@ -5,6 +5,7 @@ var CardPattern = ["Spade", "Diamond", "Heart", "Clover"]
 var CardNum = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"]
 
 var card:Array
+var card_on_hand = 0
 
 var card_scene:PackedScene = preload("res://Scenes/card.tscn")
 
@@ -39,6 +40,7 @@ func _ready():
 		var c = card.pop_front()
 		append_back(c)
 		remain_cards -= 1
+		card_on_hand += 1
 		await get_tree().create_timer(1).timeout
 	
 	#start_game()
@@ -82,8 +84,11 @@ func check_state():
 	var front_card = $UI/VBC/Hand.get_child(2)
 	var back_card = $UI/VBC/Hand.get_child($UI/VBC/Hand.get_child_count() - 3)
 	
-	if $UI/VBC/Hand.get_child_count() == 4:
+	print(card_on_hand)
+	if card_on_hand == 0:
+		print("우승")
 		get_tree().change_scene_to_file("res://Scenes/win.tscn")
+		await get_tree().create_timer(0.01).timeout
 	
 	var front_puttable = released_card.check_puttable(front_card)
 	var back_puttable = released_card.check_puttable(back_card)
@@ -93,15 +98,18 @@ func check_state():
 	$UI/VBC/Hand/PutFront.visible = false
 	$UI/VBC/Hand/PutBack.visible = false
 	
+	#print(remain_cards, card.size())
+	
 	if front_puttable or back_puttable:
 		$UI/VBC/Hand/ReleaseFront.visible = front_puttable
 		$UI/VBC/Hand/ReleaseBack.visible = back_puttable
 	else:
 		if remain_cards == 0:
 			get_tree().change_scene_to_file("res://Scenes/lose.tscn")
-		next_card_open()
-		$UI/VBC/Hand/PutFront.visible = true
-		$UI/VBC/Hand/PutBack.visible = true
+		else:
+			next_card_open()
+			$UI/VBC/Hand/PutFront.visible = true
+			$UI/VBC/Hand/PutBack.visible = true
 
 
 func next_card_open():
@@ -109,6 +117,7 @@ func next_card_open():
 	var next_card = card.pop_front()
 	flip_card.card_pattern = next_card.pattern
 	flip_card.card_num = next_card.num
+	#print(flip_card.card_pattern, flip_card.card_num)
 	$UI/VBC/Other/CardFile/VBC/FlipCard.flip_card()
 
 
@@ -118,6 +127,7 @@ func _on_release_front_pressed():
 	released_card.card_pattern = front_card.card_pattern
 	released_card.card_num = front_card.card_num
 	front_card.queue_free()
+	card_on_hand -= 1
 	await get_tree().create_timer(0.01).timeout
 	emit_signal("check_start")
 
@@ -128,6 +138,7 @@ func _on_release_back_pressed():
 	released_card.card_pattern = back_card.card_pattern
 	released_card.card_num = back_card.card_num
 	back_card.queue_free()
+	card_on_hand -= 1
 	await get_tree().create_timer(0.01).timeout
 	emit_signal("check_start")
 
@@ -140,6 +151,7 @@ func _on_put_front_pressed():
 	$UI/VBC/Hand/ReleaseFront.add_sibling(new_card)
 	$UI/VBC/Other/CardFile/VBC/FlipCard/AnimationPlayer.stop()
 	remain_cards -= 1
+	card_on_hand += 1
 	await get_tree().create_timer(0.01).timeout
 	emit_signal("check_start")
 
@@ -152,5 +164,6 @@ func _on_put_back_pressed():
 	$UI/VBC/Hand.get_child($UI/VBC/Hand.get_child_count() - 3).add_sibling(new_card)
 	$UI/VBC/Other/CardFile/VBC/FlipCard/AnimationPlayer.stop()
 	remain_cards -= 1
+	card_on_hand += 1
 	await get_tree().create_timer(0.01).timeout
 	emit_signal("check_start")

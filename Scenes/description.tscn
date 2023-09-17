@@ -1,0 +1,51 @@
+[gd_scene load_steps=2 format=3 uid="uid://ctivmmaanonxw"]
+
+[ext_resource type="Script" path="res://Scripts/description.gd" id="1_aklod"]
+
+[node name="Description" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_aklod")
+
+[node name="Title" type="Button" parent="."]
+layout_mode = 0
+offset_left = 108.0
+offset_top = 70.0
+offset_right = 236.0
+offset_bottom = 120.0
+theme_override_font_sizes/font_size = 30
+text = "뒤로가기"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -656.0
+offset_top = -385.0
+offset_right = 656.0
+offset_bottom = 385.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 50
+text = "이 게임은 데크를 이용한 간단한 카드게임입니다.
+게임의 목표는 손에 있는 카드를 모두 내려놓는 것입니다.
+카드를 내려놓을 수 있는 조건은 [같은 모양]이거나
+놓여있는 카드의 [다음 숫자 또는 이전 숫자]인 경우에
+내려놓을 수 있습니다.
+데크를 이용한만큼 손의 카드 중에서 앞 뒤에서만
+카드를 내려놓을 수 있습니다.
+양쪽 카드를 전부 내려놓을 수 없는 경우에는
+다음 카드를 뽑게 되고, 손의 앞 또는 뒤에 추가하게 됩니다.
+나머지 카드가 없는 상태에서 양쪽 카드를 내려놓을 수
+없는 경우에는 게임에서 패배하게 됩니다."
+fit_content = true
+
+[connection signal="pressed" from="Title" to="." method="_on_title_pressed"]
