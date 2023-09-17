@@ -1,7 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://dyd4aiki7qqya"]
+[gd_scene load_steps=5 format=3 uid="uid://dyd4aiki7qqya"]
 
 [ext_resource type="Script" path="res://Scripts/play_scene.gd" id="1_vfv0p"]
 [ext_resource type="PackedScene" uid="uid://b07p1n4jab4fo" path="res://Scenes/flip_card.tscn" id="2_jdeg8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ew1p4"]
+bg_color = Color(1, 0, 0, 1)
+
+[sub_resource type="Theme" id="Theme_7gela"]
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_ew1p4")
 
 [node name="PlayScene" type="Node"]
 script = ExtResource("1_vfv0p")
@@ -23,7 +29,9 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Life" type="ProgressBar" parent="UI/VBC"]
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
+theme = SubResource("Theme_7gela")
 max_value = 52.0
 step = 1.0
 

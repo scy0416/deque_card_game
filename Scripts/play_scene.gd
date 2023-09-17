@@ -83,7 +83,7 @@ func check_state():
 	var back_card = $UI/VBC/Hand.get_child($UI/VBC/Hand.get_child_count() - 3)
 	
 	if $UI/VBC/Hand.get_child_count() == 4:
-		pass
+		get_tree().change_scene_to_file("res://Scenes/win.tscn")
 	
 	var front_puttable = released_card.check_puttable(front_card)
 	var back_puttable = released_card.check_puttable(back_card)
@@ -98,7 +98,7 @@ func check_state():
 		$UI/VBC/Hand/ReleaseBack.visible = back_puttable
 	else:
 		if remain_cards == 0:
-			pass
+			get_tree().change_scene_to_file("res://Scenes/lose.tscn")
 		next_card_open()
 		$UI/VBC/Hand/PutFront.visible = true
 		$UI/VBC/Hand/PutBack.visible = true

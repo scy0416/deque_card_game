@@ -40,14 +40,17 @@ layout_mode = 2
 
 [node name="Start" type="Button" parent="UI/CC/VBC"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 50
 text = "게임 시작"
 
 [node name="Rule" type="Button" parent="UI/CC/VBC"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 50
 text = "게임 규칙"
 
 [node name="Quit" type="Button" parent="UI/CC/VBC"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 50
 text = "끝내기"
 
 [connection signal="pressed" from="UI/CC/VBC/Start" to="." method="_on_start_pressed"]
