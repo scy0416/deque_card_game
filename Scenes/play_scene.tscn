@@ -22,8 +22,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ProgressBar" type="ProgressBar" parent="UI/VBC"]
+[node name="Life" type="ProgressBar" parent="UI/VBC"]
 layout_mode = 2
+max_value = 52.0
+step = 1.0
 
 [node name="Other" type="HBoxContainer" parent="UI/VBC"]
 layout_mode = 2
@@ -66,10 +68,28 @@ layout_mode = 2
 size_flags_vertical = 3
 alignment = 1
 
-[node name="Front" type="Button" parent="UI/VBC/Hand"]
+[node name="PutFront" type="Button" parent="UI/VBC/Hand"]
+visible = false
+layout_mode = 2
+text = "추가하기(앞쪽)"
+
+[node name="ReleaseFront" type="Button" parent="UI/VBC/Hand"]
+visible = false
 layout_mode = 2
 text = "놓기(앞쪽)"
 
-[node name="Back" type="Button" parent="UI/VBC/Hand"]
+[node name="ReleaseBack" type="Button" parent="UI/VBC/Hand"]
+visible = false
 layout_mode = 2
 text = "놓기(뒤쪽)"
+
+[node name="PutBack" type="Button" parent="UI/VBC/Hand"]
+visible = false
+layout_mode = 2
+text = "추가하기(뒤쪽)"
+
+[connection signal="check_start" from="." to="." method="start_game"]
+[connection signal="pressed" from="UI/VBC/Hand/PutFront" to="." method="_on_put_front_pressed"]
+[connection signal="pressed" from="UI/VBC/Hand/ReleaseFront" to="." method="_on_release_front_pressed"]
+[connection signal="pressed" from="UI/VBC/Hand/ReleaseBack" to="." method="_on_release_back_pressed"]
+[connection signal="pressed" from="UI/VBC/Hand/PutBack" to="." method="_on_put_back_pressed"]
