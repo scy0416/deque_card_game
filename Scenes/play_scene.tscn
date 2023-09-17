@@ -1,4 +1,7 @@
-[gd_scene format=3 uid="uid://dyd4aiki7qqya"]
+[gd_scene load_steps=3 format=3 uid="uid://dyd4aiki7qqya"]
+
+[ext_resource type="PackedScene" uid="uid://do22l6w1ilhvp" path="res://Scenes/card.tscn" id="1_cvvjo"]
+[ext_resource type="PackedScene" uid="uid://b07p1n4jab4fo" path="res://Scenes/flip_card.tscn" id="2_jdeg8"]
 
 [node name="PlayScene" type="Node"]
 
@@ -25,13 +28,37 @@ layout_mode = 2
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="ReleaseCard" type="Control" parent="UI/VBC/Other"]
+[node name="ReleaseCard" type="CenterContainer" parent="UI/VBC/Other"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="CardFile" type="Control" parent="UI/VBC/Other"]
+[node name="VBC" type="VBoxContainer" parent="UI/VBC/Other/ReleaseCard"]
+layout_mode = 2
+
+[node name="Card" parent="UI/VBC/Other/ReleaseCard/VBC" instance=ExtResource("1_cvvjo")]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/VBC/Other/ReleaseCard/VBC"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "놓여있는 카드"
+horizontal_alignment = 1
+
+[node name="CardFile" type="CenterContainer" parent="UI/VBC/Other"]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="VBC" type="VBoxContainer" parent="UI/VBC/Other/CardFile"]
+layout_mode = 2
+
+[node name="FlipCard" parent="UI/VBC/Other/CardFile/VBC" instance=ExtResource("2_jdeg8")]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/VBC/Other/CardFile/VBC"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "다음 카드"
+horizontal_alignment = 1
 
 [node name="Hand" type="HFlowContainer" parent="UI/VBC"]
 layout_mode = 2
