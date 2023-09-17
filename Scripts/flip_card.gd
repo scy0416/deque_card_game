@@ -1,5 +1,5 @@
-extends Control
+extends TextureRect
 
 
 func flip_card():
-	$AnimationPlayer.play("card_flip")
+	$AnimationPlayer.play("flip_card")
