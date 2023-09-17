@@ -1,9 +1,10 @@
 [gd_scene load_steps=3 format=3 uid="uid://dyd4aiki7qqya"]
 
-[ext_resource type="PackedScene" uid="uid://do22l6w1ilhvp" path="res://Scenes/card.tscn" id="1_cvvjo"]
+[ext_resource type="Script" path="res://Scripts/play_scene.gd" id="1_vfv0p"]
 [ext_resource type="PackedScene" uid="uid://b07p1n4jab4fo" path="res://Scenes/flip_card.tscn" id="2_jdeg8"]
 
 [node name="PlayScene" type="Node"]
+script = ExtResource("1_vfv0p")
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
@@ -28,17 +29,17 @@ layout_mode = 2
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="ReleaseCard" type="CenterContainer" parent="UI/VBC/Other"]
+[node name="ReleaseCardContainer" type="CenterContainer" parent="UI/VBC/Other"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="VBC" type="VBoxContainer" parent="UI/VBC/Other/ReleaseCard"]
+[node name="VBC" type="VBoxContainer" parent="UI/VBC/Other/ReleaseCardContainer"]
 layout_mode = 2
 
-[node name="Card" parent="UI/VBC/Other/ReleaseCard/VBC" instance=ExtResource("1_cvvjo")]
+[node name="ReleasedCard" parent="UI/VBC/Other/ReleaseCardContainer/VBC" instance=ExtResource("2_jdeg8")]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="UI/VBC/Other/ReleaseCard/VBC"]
+[node name="Label" type="Label" parent="UI/VBC/Other/ReleaseCardContainer/VBC"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "놓여있는 카드"
